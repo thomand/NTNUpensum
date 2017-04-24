@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <!-- To adjust iPhone visual appearance -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+    <title>Skriv inn brukernavn og passord</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="https://idp.feide.no/simplesaml/module.php/feide/default_ie.css" />
+    <![endif]-->
+
+    <!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="https://idp.feide.no/simplesaml/module.php/feide/default_ie6.css" />
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="https://idp.feide.no/simplesaml/module.php/feide/default.css" />
+    <link rel="stylesheet" type="text/css" href="https://idp.feide.no/simplesaml/module.php/feide/default-small.css" />
+    <link rel="stylesheet" type="text/css" href="https://idp.feide.no/simplesaml/module.php/feide/handheld_media.css" media="handheld" />
+    <link rel="icon" type="image/png" href="https://idp.feide.no/simplesaml/module.php/feide/favicon.ico" />
+
+
+    <meta name="robots" content="noindex, nofollow" />
+
+
+    <!-- head -->
+
+    <script type="text/javascript" language="JavaScript">
+
+        <!-- Show and hide parts of the page, and turn off autocomplete of password. -->
+
+        $(document).ready(function() {
+            $("input#password").attr("autocomplete", "off");
+
+        });
+
+        $(document).ready(function() {
+            $("#input_has_js").val("1");
+            if (window.top !== window.self) {
+                $("#input_iframe").val("1");
+            }
+        });
+
+    </script><!-- /head --></head>
+
+<body>
+
+
+<!-- <div id="borderframe"> -->
+<div class="corner_t">
+    <div class="corner_l">
+        <div class="corner_r">
+            <div class="corner_b">
+                <div class="corner_tl"><div class="corner_tr"> <div class="corner_bl"> <div class="corner_br"> <div class="corner"><div id="logos"><img alt="Service Provider Logo" class="leftlogo" src="https://idp.feide.no/simplesaml/module.php/feide/splogos/ntnu_logo.png" />
+                    <div class="minheight"></div>
+                    <div id="languageframe">
+                        <div id="languagebar">
+                            <a href="https://idp.feide.no/simplesaml/module.php/feide/login.php?asLen=252&amp;AuthState=_95f9fb1840c707aba0ae53236b02c1a37e6796751d%3Ahttps%3A%2F%2Fidp.feide.no%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Durn%253Amace%253Afeide.no%253Aservices%253Ano.ntnu.ssowrapper%26cookieTime%3D1478345488%26RelayState%3D%252Fsso-wrapper%252Fweb%252Fwrapper%253Ftarget%253Ditslearning&amp;language=en">English</a> | Bokmål |
+                            <a href="https://idp.feide.no/simplesaml/module.php/feide/login.php?asLen=252&amp;AuthState=_95f9fb1840c707aba0ae53236b02c1a37e6796751d%3Ahttps%3A%2F%2Fidp.feide.no%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Durn%253Amace%253Afeide.no%253Aservices%253Ano.ntnu.ssowrapper%26cookieTime%3D1478345488%26RelayState%3D%252Fsso-wrapper%252Fweb%252Fwrapper%253Ftarget%253Ditslearning&amp;language=nn">Nynorsk</a> |
+                            <a href="https://idp.feide.no/simplesaml/module.php/feide/login.php?asLen=252&amp;AuthState=_95f9fb1840c707aba0ae53236b02c1a37e6796751d%3Ahttps%3A%2F%2Fidp.feide.no%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Durn%253Amace%253Afeide.no%253Aservices%253Ano.ntnu.ssowrapper%26cookieTime%3D1478345488%26RelayState%3D%252Fsso-wrapper%252Fweb%252Fwrapper%253Ftarget%253Ditslearning&amp;language=se">Sámegiella</a></div>	<br style="clear: both; height: 0px;" />
+                    </div>
+                </div>
+
+
+                    <div id="content">
+
+
+                        <div id="inputframe">
+                            <form action="">
+                                <fieldset>
+                                    <legend>Pålogging gjennom Feide</legend>
+
+                                    <p><b>SSO wrapper</b> har bedt om at du logger inn.
+                                        Valgt tilhørighet er <b>NTNU</b>. <a href="login.php?selectorg=change_org&amp;org=ntnu.no&amp;asLen=252&amp;AuthState=_95f9fb1840c707aba0ae53236b02c1a37e6796751d%3Ahttps%3A%2F%2Fidp.feide.no%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Durn%253Amace%253Afeide.no%253Aservices%253Ano.ntnu.ssowrapper%26cookieTime%3D1478345488%26RelayState%3D%252Fsso-wrapper%252Fweb%252Fwrapper%253Ftarget%253Ditslearning">Endre</a>?</p>
+
+
+
+                                    <div class="inputfields">
+                                        <p><label for="username">Brukernavn</label>
+                                            <input class="inputtext" type="text" id="username" name="feidename"/></p>
+
+                                        <p><label id="foo" for="password">Passord</label>
+                                            <input class="inputtext" type="password" id="password" name="password" /></p>
+
+                                        <input type="button" onclick="location.href='staffEdit.html'" value="Logg inn" />
+
+                                    </div>
+
+                                    <div id="loginhelplink" class="loginhelp-static"><a href="#loginhelpframe" style="display: none">Glemt brukernavn og passord?</a></div>
+                                    <div id="loginhelpframe" style="display: none">
+                                        <p>Kontakt <b>NTNU</b>:</p>
+                                        <ul>				<li><a href="http://www.ntnu.no/adm/it/brukerstotte">
+                                            Hjemmesiden til brukerstøtte				</a>
+                                        </li>				<li><a href="mailto:orakel@ntnu.no">
+                                            Send epost til brukerstøtte				</a>
+                                        </li>				<li><a href="tel:+4773591500">
+                                            Telefon: +47 73591500				</a>
+                                        </li>				<li><a href="https://innsida.ntnu.no/wiki/-/wiki/English/Usernames+and+passwords">
+                                            Bytt passord				</a>
+                                        </li>			</ul>		</div>
+                                </fieldset>
+                                <input type="hidden" name="has_js" value="0" id="input_has_js" />
+                                <input type="hidden" name="inside_iframe" value="0" id="input_iframe" />
+                            </form>
+                        </div>
+
+
+                    </div></div></div></div></div></div></div></div></div> <!-- box -->
+
+
+    <div id="bottomframe">
+        <div class="help"><a href="#helpframe">Hjelp</a></div>
+        <div class="privacy"><a href="#privacyframe">Personvern og informasjonskapsler</a></div>
+        <div class="info"><a href="#infoframe">Mer informasjon</a></div>
+
+
+
+
+    </div> <!-- bottomframe -->
+
+</div> <!-- content -->
+
+</body>
+</html>
+
+
