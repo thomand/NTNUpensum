@@ -5,6 +5,25 @@
  * Thanks for MaterializeCSS.com
  */
 
+body {
+    overflow-x: hidden;
+}
+.side-nav {
+    position: fixed;
+    width: 240px;
+    left: 0px;
+    top: 0;
+    margin: 0;
+    height: 100%;
+    height: calc(100% + 60px);
+    height: -moz-calc(100%);
+    padding-bottom: 60px;
+    background-color: #fff;
+    z-index: 999;
+    overflow-y: auto;
+    will-change: left;
+}
+
 .default_color{background-color: #2196F3 !important}
 
 .default_color_text{color: #2196F3 !important}
@@ -76,9 +95,6 @@
     color:#fff;
 }
 
-.card-image {
-
-}
 
 .sticky {
     position: fixed;
@@ -245,6 +261,11 @@ nav ul a {
 
     p {
         font-size: 0.5rem;
+    }
+
+    .sticky {
+        width:90%;
+        top:49px;
     }
 }
 

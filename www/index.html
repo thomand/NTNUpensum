@@ -804,8 +804,9 @@
         var navWrap = $('#navWrap'),
                 nav = $('#choices'),
                 stop = $('#stopHere'),
-                startPosition = navWrap.offset().top + nav.outerHeight() - 64;
-                stopPosition = stop.offset().top - nav.outerHeight() - 170;
+                topNavBar = $('#nav_f'),
+                startPosition = navWrap.offset().top + nav.outerHeight() - topNavBar.outerHeight();
+                /*stopPosition = stop.offset().top - nav.outerHeight() - 170;*/
 
         $(document).scroll(function () {
             //stick courseInfo to top of page
