@@ -38,12 +38,12 @@ function init() {
 function insert(data) {
     for (var element in data) {
         var entry = data[element];
-        makeSubjectCard(entry);
+        makeSubjectCard(entry, element);
     }
 
 }
 
-function makeSubjectCard(data) {
+function makeSubjectCard(data, index) {
     /*Make the overall card everything is put inside*/
     var card = document.createElement("div"); card.className = "card";
         /*Make the card-image*/
@@ -81,15 +81,26 @@ function makeSubjectCard(data) {
             span.textContent = data.code + " " + data.name;
             var i = document.createElement("i"); i.className = "mdi-navigation-close right";
             span.appendChild(i);
+            /*Generate and add Lecturer */
+            var lecturer = document.createElement("h6"); lecturer.textContent = "Foreleser: " + data.lecturer;
+            lecturer.style.color = "#222";
+
             /*Book information -> Should be a loop of all books*/
             bookTitle = document.createElement("h6"); bookTitle.textContent = "Adams og Essexs: Calculus, eighth edition.";
             bookInfo = document.createElement("p"); bookInfo.textContent = "Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika. Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven. (Den eneste forskjellen er at spesialutgaven er delt i to bind)."
             /*Add everything to the book information div -> cardReveal*/
             cardReveal.appendChild(span);
+            cardReveal.appendChild(lecturer);
             cardReveal.appendChild(bookTitle);
             cardReveal.appendChild(bookInfo);
             /*Add the card-reveal to the card*/
             card.appendChild(cardReveal);
+            /*Add the index of the data to a hidden div to the card*/
+            var index_ = document.createElement("div");
+            index_.className = "index";
+            index_.textContent = index;
+            index_.style.display = "none";
+            card.appendChild(index_);
             /*Add the card to the cardContainer*/
             document.getElementById("cardContainer").appendChild(card);
 
@@ -139,4 +150,5 @@ function makeSubjectCard(data) {
 div.appendChild(card);
 document.getElementById("card-container-row").appendChild(div);*/
 }
+
 

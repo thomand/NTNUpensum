@@ -56,6 +56,13 @@ body {
     background-color: #2196F3;
 }
 
+#searchIcon {
+    color: #2196F3 !important;
+    font-size: 3em;
+    margin-top: -0.4em;
+}
+
+
 #nav_f{
     box-shadow: none !important;
     -webkit-box-shadow:none !important;

@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <!--<script src="js/main.js"></script>-->
+    <script src="js/staffEdit.js"></script>
 </head>
 <body id="top" class="scrollspy">
 
@@ -37,21 +37,20 @@
     <div class="container">
         <h2 class="header text_b">Endre emne</h2>
         <div class="row">
-
             <div class="col s12">
                 <div class="row">
                     <form class="col s12">
                         <div class="row">
                             <div class="input-field col s3">
-                                <input disabled value="TMA4100" placeholder="Placeholder" id="subj-code" type="text" class="validate">
+                                <input disabled value="" placeholder="Placeholder" id="subj-code" type="text" class="validate">
                                 <label for="subj-code">Emnekode</label>
                             </div>
                             <div class="input-field col s6">
-                                <input disabled value="Matematikk 1" id="subj-name" type="text" class="validate">
+                                <input disabled value="" placeholder="Placeholder" id="subj-name" type="text" class="validate">
                                 <label for="subj-name">Emnenavn</label>
                             </div>
                             <div class="input-field col s3">
-                                <input disabled value="Trondheim" id="subj-location" type="text" class="validate">
+                                <input disabled value="" placeholder="Placeholder" id="subj-location" type="text" class="validate">
                                 <label for="subj-location">Lokasjon</label>
                             </div>
                         </div>
@@ -117,108 +116,8 @@
                     <button id="submitFormButton" class="btn waves-effect waves-light" type="submit" name="action">Lagre
                         <i class="material-icons right">send</i>
                     </button>
-
                 </div>
-        </div><!--
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light activator">
-                        <h2 style="text-align: center">TMA4115</h2>
-                        <h4 style="text-align: center">Matematikk 3</h4>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Emneside</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
-                        <h5>Differential equations, linear algebra and its applications.
-                        Pearson, compiled by IMF, NTNU.
-                        Second edition.</h5>
-                        <p>Note: The second edition differs from the first mainly in the first chapter on complex numbers.
-                        The remaining parts on second order differential equations and linear algebra are updated versions of previous editions.
-                        Conclusion: To learn the material, we recommend the second edition, but you may still use the first edition.
-                        Be aware though that the exercises and the lectures always refer to the second edition.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light activator">
-                        <h2 id="titleCode" style="text-align: center"></h2>
-                        <h4 id="titleName" style="text-align: center"></h4>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Emneside</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
-                        <h5 id="bookTitle"></h5>
-                        <p id="bookDesc"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project3.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project4.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project5.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project6.jpeg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>-->
+        </div>
         </div>
     </div>
 </div>
@@ -240,8 +139,10 @@
             tag: 'Matematikk'
         }, {
             tag: 'Siving'
-        }],
+        }]
     });
+
+
 </script>
 
     <!--  Scripts-->
