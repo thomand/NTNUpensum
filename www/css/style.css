@@ -24,6 +24,10 @@ body {
     will-change: left;
 }
 
+#staffArrowBack {
+    display: none;
+}
+
 .default_color{background-color: #2196F3 !important}
 
 .default_color_text{color: #2196F3 !important}
@@ -267,6 +271,10 @@ nav ul a {
         width:90%;
         top:49px;
     }
+
+    #staffArrowBack {
+        display: block;
+    }
 }
 
 input, textarea {
@@ -288,3 +296,6 @@ nav a.button-collapse {
 footer.page-footer {
     margin-top: 0px !important;
 }
+
+/*STAFFSEARCH*/
+

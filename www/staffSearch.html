@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
+    <title>NTNU pensum</title>
+
+    <!-- CSS  -->
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet">
+    <link href="min/custom-min.css" type="text/css" rel="stylesheet" >
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <!--<script src="js/main.js"></script>-->
+</head>
+<body id="top" class="scrollspy">
+
+
+
+<!--Navigation-->
+ <div class="navbar-fixed">
+    <nav id="nav_f" class="default_color" role="navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+            <a href="index.html" id="logo-container" class="brand-logo">NTNU pensum</a>
+                <a id="staffArrowBack" href="index.html"><i class="mdi-navigation-arrow-back"></i></a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!--Hero-->
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <h1 class="text_h center header cd-headline letters type">
+            <span>Her kan du</span>
+            <span class="cd-words-wrapper waiting">
+                <b class="is-visible">opprette nytt emne</b>
+                <b>legge til pensum</b>
+                <b>angi faglærere</b>
+                <b>legge til tagger for å bedre søk</b>
+            </span>
+        </h1>
+    </div>
+</div>
+
+<!--Intro-->
+<div id="intro" class="section scrollspy">
+    <div class="container">
+        <div class="row">
+            <div  class="col s12">
+                <h2 class="center header text_h2"> Søk opp <span class="span_h2"> emnekoden </span> på det emnet du ønsker å legge til pensum for. </h2>
+            </div>
+
+            <div class="col s12">
+                <form>
+                    <div class="input-field">
+                        <input id="search" type="search" required>
+                        <label for="search"><i class="material-icons">search</i></label>
+                        <!-- I've put "red-text" class to emphasize -->
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Work-->
+<div class="section scrollspy" id="searchResults">
+    <div class="container">
+        <h2 id="searchHeader" class="header text_b">Søkeresultater</h2>
+        <div class="row" id="card-container-row">
+            <div class="col s12">
+                <div id="navWrap" class="card">
+                    <div id="choices">
+                        <div class="col s2"><h5 class="text_b">Emnekode</h5></div>
+                        <div class="col s3"><h5 class="text_b">Emnenavn</h5></div>
+                        <div class="col s3"><h5 class="text_b">Faglærer</h5></div>
+                        <div class="col s2"><h5 class="text_b">Lokasjon</h5></div>
+                        <div class="col s2"><h5 class="text_b">Fagfelt</h5></div>
+                        <!--<div class="card-image waves-effect waves-block waves-light activator">
+                            <h2 class="activator" style="text-align: center">TMA4100</h2>
+                            <h4 class="activator" style="text-align: center">Matematikk 1</h4>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                            <p><a href="#">Emneside</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                            <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                            <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika. Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven. (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        </div>-->
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h6>Adams og Essexs: Calculus, eighth edition.</h6>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <br>
+                        <div class="fixed-action-btn">
+                            <a class="btn-floating btn-small red">
+                                <i class="small material-icons">mode_edit</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light activator">
+                        <div class="col s2 activator"><h5 class="text_h2 activator">IE502314</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">3D Multifysikk</h5></div>
+                        <div class="col s3 activator"><h5 class="text_h2 activator">Ola Nordmann</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Ålesund</h5></div>
+                        <div class="col s2 activator"><h5 class="text_h2 activator">Tekniske fag</h5></div>
+                    </div>
+
+
+                    <!--
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Vis pensum <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Emneside</a></p>
+                    </div>-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Pensum <i class="mdi-navigation-close right"></i></span>
+                        <h5>Adams og Essexs: Calculus, eighth edition.</h5>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                        <p> Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika.
+                            Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven.
+                            (Den eneste forskjellen er at spesialutgaven er delt i to bind). </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Parallax-->
+<div id="stopHere" class="parallax-container">
+    <div class="parallax"><img src="img/ntnu.jpg"></div>
+</div>
+
+<!--Footer-->
+<footer id="contact" class="page-footer default_color scrollspy">
+    <!--<div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <form class="col s12" action="contact.php" method="post">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-account-circle prefix white-text"></i>
+                            <input id="icon_prefix" name="name" type="text" class="validate white-text">
+                            <label for="icon_prefix" class="white-text">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="mdi-communication-email prefix white-text"></i>
+                            <input id="icon_email" name="email" type="email" class="validate white-text">
+                            <label for="icon_email" class="white-text">Email-id</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="mdi-editor-mode-edit prefix white-text"></i>
+                            <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
+                            <label for="icon_prefix2" class="white-text">Message</label>
+                        </div>
+                        <div class="col offset-s7 s5">
+                            <button class="btn waves-effect waves-light red darken-1" type="submit">Submit
+                                <i class="mdi-content-send right white-text"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">joashpereira.com</h5>
+                <ul>
+                    <li><a class="white-text" href="http://www.joashpereira.com/">Home</a></li>
+                    <li><a class="white-text" href="http://www.joashpereira.com/blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Social</h5>
+                <ul>
+                    <li>
+                        <a class="white-text" href="https://www.behance.net/joashp">
+                            <i class="small fa fa-behance-square white-text"></i> Behance
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://www.facebook.com/joash.c.pereira">
+                            <i class="small fa fa-facebook-square white-text"></i> Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://github.com/joashp">
+                            <i class="small fa fa-github-square white-text"></i> Github
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://www.linkedin.com/in/joashp">
+                            <i class="small fa fa-linkedin-square white-text"></i> Linkedin
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>-->
+    <div class="footer-copyright default_color">
+
+    </div>
+</footer>
+
+
+<!--  Scripts-->
+<!--<script src="min/plugin-min.js"></script>-->
+<script src="min/custom-min.js"></script>
+<script src="js/materialize.js"></script>
+<script>
+    var navWrap = $('#navWrap'),
+            nav = $('#choices'),
+            stop = $('#stopHere'),
+            topNavBar = $('#nav_f'),
+            startPosition = navWrap.offset().top + nav.outerHeight() - topNavBar.outerHeight();
+    /*stopPosition = stop.offset().top - nav.outerHeight() - 170;*/
+
+    $(document).scroll(function () {
+        //stick courseInfo to top of page
+        var y = $(this).scrollTop();
+
+        if (y > startPosition) {
+            navWrap.addClass('sticky');
+
+        } else {
+            navWrap.removeClass('sticky');
+        }
+    });
+
+
+</script>
+
+</body>
+</html>
