@@ -68,6 +68,10 @@ body {
     color:white;
 }
 
+#submitFormButton{
+    background-color: #2196F3
+}
+
 .brand-logo{
     position: absolute;
     color: #fff;

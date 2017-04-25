@@ -49,28 +49,28 @@ function makeSubjectCard(data) {
         /*Make the card-image*/
         var cardImage = document.createElement("div"); cardImage.className = "card-image waves-effect waves-block waves-light activator";
             /*Make the five columns for subject information*/
-            var cols2 = "col s2 activator"; var cols3 = "col s3 activator";
+            var cols2 = "col s2 activator"; var cols3 = "col s3 activator"; var cols6 = "col s6 activator";
             var first = document.createElement("div"); first.className = cols2;
-            var second = document.createElement("div"); second.className = cols3;
-            var third = document.createElement("div"); third.className = cols3;
+            var second = document.createElement("div"); second.className = cols6;
+            /*var third = document.createElement("div"); third.className = cols3;*/
             var forth = document.createElement("div"); forth.className = cols2;
             var fifth = document.createElement("div"); fifth.className = cols2;
             /*Make the five H5 containers that hold the subject information*/
             var h5Class = "text_h2 activator";
-            var h5_1 = document.createElement("h5"), h5_2 = document.createElement("h5"), h5_3 = document.createElement("h5"), h5_4 = document.createElement("h5"), h5_5 = document.createElement("h5");
-            h5_1.className = h5Class; h5_2.className = h5Class; h5_3.className = h5Class; h5_4.className = h5Class; h5_5.className = h5Class;
+            var h5_1 = document.createElement("h5"), h5_2 = document.createElement("h5"), /* h5_3 = document.createElement("h5"), */h5_4 = document.createElement("h5"), h5_5 = document.createElement("h5");
+            h5_1.className = h5Class; h5_2.className = h5Class; /*h5_3.className = h5Class;*/ h5_4.className = h5Class; h5_5.className = h5Class;
             h5_1.textContent = data.code;
             h5_2.textContent = data.name;
-            h5_3.textContent = data.lecturer;
+            /*h5_3.textContent = data.lecturer;*/
             h5_4.textContent = data.location;
             h5_5.textContent = "Tekniske fag";
             /*Connect all elements*/
             first.appendChild(h5_1);
             second.appendChild(h5_2);
-            third.appendChild(h5_3);
+            /*third.appendChild(h5_3);*/
             forth.appendChild(h5_4);
             fifth.appendChild(h5_5);
-            cardImage.appendChild(first); cardImage.appendChild(second); cardImage.appendChild(third); cardImage.appendChild(forth); cardImage.appendChild(fifth);
+            cardImage.appendChild(first); cardImage.appendChild(second); /*cardImage.appendChild(third); */cardImage.appendChild(forth); cardImage.appendChild(fifth);
             /*Add the card-image to the card*/
             card.appendChild(cardImage);
             /*Make the card-reveal -> The information about the subject*/
