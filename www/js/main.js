@@ -73,28 +73,10 @@ function makeSubjectCard(data, index) {
             cardImage.appendChild(first); cardImage.appendChild(second); /*cardImage.appendChild(third); */cardImage.appendChild(forth); cardImage.appendChild(fifth);
             /*Add the card-image to the card*/
             card.appendChild(cardImage);
-            /*Make the card-reveal -> The information about the subject*/
-            var cardReveal = document.createElement("div"); cardReveal.className = "card-reveal";
-            /*Header information and navigation similar for all subjects*/
-            var span = document.createElement("span");
-            span.className = "card-title grey-text text-darken-4";
-            span.textContent = data.code + " " + data.name;
-            var i = document.createElement("i"); i.className = "mdi-navigation-close right";
-            span.appendChild(i);
-            /*Generate and add Lecturer */
-            var lecturer = document.createElement("h6"); lecturer.textContent = "Foreleser: " + data.lecturer;
-            lecturer.style.color = "#222";
+            card.addEventListener("click", function(){
+                makeSubjectInfo(card, data);
 
-            /*Book information -> Should be a loop of all books*/
-            bookTitle = document.createElement("h6"); bookTitle.textContent = "Adams og Essexs: Calculus, eighth edition.";
-            bookInfo = document.createElement("p"); bookInfo.textContent = "Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika. Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven. (Den eneste forskjellen er at spesialutgaven er delt i to bind)."
-            /*Add everything to the book information div -> cardReveal*/
-            cardReveal.appendChild(span);
-            cardReveal.appendChild(lecturer);
-            cardReveal.appendChild(bookTitle);
-            cardReveal.appendChild(bookInfo);
-            /*Add the card-reveal to the card*/
-            card.appendChild(cardReveal);
+            });
             /*Add the index of the data to a hidden div to the card*/
             var index_ = document.createElement("div");
             index_.className = "index";
@@ -104,51 +86,31 @@ function makeSubjectCard(data, index) {
             /*Add the card to the cardContainer*/
             document.getElementById("cardContainer").appendChild(card);
 
+}
 
-/*            var code = document.createElement("h2");
-            code.style.textAlign = "center";
-            code.textContent = data.code;
-            code.style.textTransform = "uppercase";
-            var title = document.createElement("h4");
-            title.style.textAlign = "center";
-            title.textContent = data.name;
-        var cardContent = document.createElement("div");
-        cardContent.className = "card-content";
-            var span = document.createElement("span");
-            span.className = "card-title activator grey-text text-darken-4";
-            span.textContent = 'Vis pensum';
-                var i1 = document.createElement("i");
-                i1.className = "mdi-navigation-more-vert right";
-                span.appendChild(i1);
-            var p = document.createElement("p");
-            var a = document.createElement("a");
-            a.href = "#";
-            a.textContent = "Emneside";
-        var cardReveal = document.createElement("div");
-        cardReveal.className = "card-reveal";
-            var span2 = document.createElement("span");
-            span2.className = "card-title grey-text text-darken-4";
-            span2.textContent = 'Pensum';
-                var i2 = document.createElement("i");
-                i2.className = "mdi-navigation-close right";
-                span2.appendChild(i2);
-            var bookTitle = document.createElement("h5");
-            bookTitle.textContent = data.books.title;
-            var bookDesc = document.createElement("p");
-            bookDesc.textContent = data.books.desc;
-        cardReveal.appendChild(span2);
-        cardReveal.appendChild(bookTitle);
-        cardReveal.appendChild(bookDesc);
-        p.appendChild(a);
-        cardContent.appendChild(span);
-        cardContent.appendChild(p);
-        cardImage.appendChild(code);
-        cardImage.appendChild(title);
-    card.appendChild(cardImage);
-    card.appendChild(cardContent);
+function makeSubjectInfo(card, data) {
+    /*Make the card-reveal -> The information about the subject*/
+    var cardReveal = document.createElement("div"); cardReveal.className = "card-reveal";
+    /*Header information and navigation similar for all subjects*/
+    var span = document.createElement("span");
+    span.className = "card-title grey-text text-darken-4";
+    span.textContent = data.code + " " + data.name;
+    var i = document.createElement("i"); i.className = "mdi-navigation-close right";
+    span.appendChild(i);
+    /*Generate and add Lecturer */
+    var lecturer = document.createElement("h6"); lecturer.textContent = "Foreleser: " + data.lecturer;
+    lecturer.style.color = "#222";
+
+    /*Book information -> Should be a loop of all books*/
+    bookTitle = document.createElement("h6"); bookTitle.textContent = "Adams og Essexs: Calculus, eighth edition.";
+    bookInfo = document.createElement("p"); bookInfo.textContent = "Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika. Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven. (Den eneste forskjellen er at spesialutgaven er delt i to bind)."
+    /*Add everything to the book information div -> cardReveal*/
+    cardReveal.appendChild(span);
+    cardReveal.appendChild(lecturer);
+    cardReveal.appendChild(bookTitle);
+    cardReveal.appendChild(bookInfo);
+    /*Add the card-reveal to the card*/
     card.appendChild(cardReveal);
-div.appendChild(card);
-document.getElementById("card-container-row").appendChild(div);*/
 }
 
 
