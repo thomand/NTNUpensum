@@ -80,42 +80,66 @@ function makeSubjectCard(data, index) {
     cardImage.appendChild(first); cardImage.appendChild(second); /*cardImage.appendChild(third); */cardImage.appendChild(forth); cardImage.appendChild(fifth);
     /*Add the card-image to the card*/
     card.appendChild(cardImage);
-    /*Make the card-reveal -> The information about the subject*/
-    var cardReveal = document.createElement("div"); cardReveal.className = "card-reveal";
-    /*Header information and navigation similar for all subjects*/
-    var span = document.createElement("span");
-    span.className = "card-title grey-text text-darken-4";
-    span.textContent = data.code + " " + data.name;
-    var i = document.createElement("i"); i.className = "mdi-navigation-close right";
-    span.appendChild(i);
-    /*Generate and add Lecturer */
-    var lecturer = document.createElement("h6"); lecturer.textContent = "Foreleser: " + data.lecturer;
-    lecturer.style.color = "#222";
-
-    /*Book information -> Should be a loop of all books*/
-    bookTitle = document.createElement("h6"); bookTitle.textContent = "Adams og Essexs: Calculus, eighth edition.";
-    bookInfo = document.createElement("p"); bookInfo.textContent = "Boken kan kjøpes i en spesiell tobinds paperbackutgave (ISBN ADAMS Custom 9781783650989) på akademika. Det spiller ingen rolle om dere kjøper spesialutgaven eller den originale utgaven. (Den eneste forskjellen er at spesialutgaven er delt i to bind)."
-    /*Add everything to the book information div -> cardReveal*/
-    cardReveal.appendChild(span);
-    cardReveal.appendChild(lecturer);
-    cardReveal.appendChild(bookTitle);
-    cardReveal.appendChild(bookInfo);
-    /*Add the card-reveal to the card*/
-    card.appendChild(cardReveal);
     /*Add the index of the data to a hidden div to the card*/
     var index_ = document.createElement("div");
     index_.className = "index";
     index_.textContent = index;
     index_.style.display = "none";
     card.appendChild(index_);
+    card.style.display = "none";
+    card.id = "card_" + index;
     /*Add the card to the cardContainer*/
     document.getElementById("cardContainer").appendChild(card);
 
 
 }
 
-function fillForm(data) {
-    document.getElementById("subj-code").value = data.code;
-    document.getElementById("subj-name").value = data.name;
-    document.getElementById("subj-location").value = data.location;
+function gid(a_id) {
+    return document.getElementById(a_id);
 }
+
+function close_all() {
+
+    for (i = 0; i <= 999; i++) {
+        var o = gid("card_" + i);
+        if (o) {
+            o.style.display = "none";
+        }
+    }
+
+}
+
+function find_my_div() {
+    close_all();
+    var o_edit = gid("search");
+    var str_needle = o_edit.value;
+    str_needle = str_needle.toUpperCase();
+    var searchStrings = str_needle.split(/\W/);
+    count = 0;
+    for (var i = 0, len = searchStrings.length; i < len; i++) {
+        var currentSearch = searchStrings[i].toUpperCase();
+        if (currentSearch !== "") {
+            gid("navWrap").style.display = "block";
+            nameDivs = document.getElementsByClassName("card");
+            for (var j = 0, divsLen = nameDivs.length; j < divsLen; j++) {
+                if (nameDivs[j].textContent.toUpperCase().indexOf(currentSearch) !== -1) {
+                    nameDivs[j].style.display = "block";
+                    count ++;
+                }
+            }
+        }
+        else {
+            gid("navWrap").style.display = "none";
+        }
+    }
+    gid("searchHeader").textContent = "Søkeresultater (" + count + ")";
+}
+
+$(document).ready(function() {
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+});

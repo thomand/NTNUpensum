@@ -59,11 +59,11 @@ function makeSubjectCard(data, index) {
             var h5Class = "text_h2 activator";
             var h5_1 = document.createElement("h5"), h5_2 = document.createElement("h5"), /* h5_3 = document.createElement("h5"), */h5_4 = document.createElement("h5"), h5_5 = document.createElement("h5");
             h5_1.className = h5Class; h5_2.className = h5Class; /*h5_3.className = h5Class;*/ h5_4.className = h5Class; h5_5.className = h5Class;
-            h5_1.textContent = data.code;
-            h5_2.textContent = data.name;
+            h5_1.textContent = data.code + " ";
+            h5_2.textContent = data.name + " ";
             /*h5_3.textContent = data.lecturer;*/
-            h5_4.textContent = data.location;
-            h5_5.textContent = "Tekniske fag";
+            h5_4.textContent = data.location + " ";
+            h5_5.textContent = "Tekniske fag ";
             /*Connect all elements*/
             first.appendChild(h5_1);
             second.appendChild(h5_2);
@@ -130,6 +130,35 @@ function close_all() {
 
 }
 
+function kmpSearch(pattern, text) {
+    if (pattern.length == 0)
+        return 0;  // Immediate match
+
+    // Compute longest suffix-prefix table
+    var lsp = [0];  // Base case
+    for (var i = 1; i < pattern.length; i++) {
+        var j = lsp[i - 1];  // Start by assuming we're extending the previous LSP
+        while (j > 0 && pattern.charAt(i) != pattern.charAt(j))
+            j = lsp[j - 1];
+        if (pattern.charAt(i) == pattern.charAt(j))
+            j++;
+        lsp.push(j);
+    }
+
+    // Walk through text string
+    var j = 0;  // Number of chars matched in pattern
+    for (var i = 0; i < text.length; i++) {
+        while (j > 0 && text.charAt(i) != pattern.charAt(j))
+            j = lsp[j - 1];  // Fall back in the pattern
+        if (text.charAt(i) == pattern.charAt(j)) {
+            j++;  // Next char matched, increment position
+            if (j == pattern.length)
+                return i - (j - 1);
+        }
+    }
+    return -1;  // Not found
+}
+
 
 function find_my_div() {
     close_all();
@@ -145,8 +174,18 @@ function find_my_div() {
             nameDivs = document.getElementsByClassName("card");
             for (var j = 0, divsLen = nameDivs.length; j < divsLen; j++) {
                 if (nameDivs[j].textContent.toUpperCase().indexOf(currentSearch) !== -1) {
-                    nameDivs[j].style.display = "block";
-                    count ++;
+                    arr = nameDivs[j].textContent.toUpperCase().split(" ");
+                    arr.pop();
+                    for (element in arr) {
+                        var match = kmpSearch(currentSearch,arr[element]);
+                        if (match == 0) {
+                            console.log(arr[element]);
+                            nameDivs[j].style.display = "block";
+                            count++;
+                            break;
+                        }
+                    }
+
                 }
             }
         }
@@ -157,4 +196,12 @@ function find_my_div() {
     gid("searchHeader").textContent = "Søkeresultater (" + count + ")";
 }
 
+$(document).ready(function() {
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+});
 

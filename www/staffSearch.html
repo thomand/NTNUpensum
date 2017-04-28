@@ -58,8 +58,8 @@
 
             <div class="col s12">
                 <form>
-                    <div class="input-field">
-                        <input id="search" type="search" required>
+                    <div class="input-field" onclick="gid('searchResults').style.display = 'block'">
+                        <input id="search" type="search" required onkeyup="find_my_div();">
                         <label for="search"><i class="material-icons">search</i></label>
                         <!-- I've put "red-text" class to emphasize -->
                         <i class="material-icons">close</i>
@@ -72,12 +72,12 @@
 </div>
 
 <!--Work-->
-<div class="section scrollspy" id="searchResults">
+<div class="section scrollspy" id="searchResults" style="display: none">
     <div class="container">
-        <h2 id="searchHeader" class="header text_b">Søkeresultater</h2>
+        <h2 id="searchHeader" class="header text_b"></h2>
         <div class="row" id="card-container-row">
             <div id="cardContainer" class="col s12">
-                <div id="navWrap" class="card">
+                <div id="navWrap" class="card" style="display: none">
                     <div id="choices">
                         <div class="col s2"><h5 class="text_b">Emnekode</h5></div>
                         <div class="col s6"><h5 class="text_b">Emnenavn</h5></div>
@@ -175,7 +175,8 @@
             nav = $('#choices'),
             stop = $('#stopHere'),
             topNavBar = $('#nav_f'),
-            startPosition = navWrap.offset().top + nav.outerHeight() - topNavBar.outerHeight();
+            //startPosition = navWrap.offset().top + nav.outerHeight() - topNavBar.outerHeight();
+            startPosition = 1420;
     /*stopPosition = stop.offset().top - nav.outerHeight() - 170;*/
 
     $(document).scroll(function () {
