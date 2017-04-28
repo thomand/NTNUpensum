@@ -177,14 +177,15 @@
                 //stop = $('#stopHere'),
                 topNavBar = $('#nav_f'),
                 windowHeight = $(document).height(),
-                startPosition = navWrap.offset().top + nav.outerHeight() - topNavBar.outerHeight();
+                //startPosition = navWrap.offset().top + nav.outerHeight() - topNavBar.outerHeight();
+                startPosition = 1420;
                 /*stopPosition = stop.offset().top - nav.outerHeight() - 170;*/
 
         $(document).scroll(function () {
             //stick courseInfo to top of page
             var y = $(this).scrollTop();
 
-            if (y > startPosition && windowHeight > 2000) {
+            if (y > startPosition) {
                 /*var temp = document.getElementById("navWrap").nextElementSibling.getBoundingClientRect().top - 25;*/
                 navWrap.addClass('sticky');
                 /*document.getElementById("navWrap").nextElementSibling.style.top = temp.toString() + "px";*/

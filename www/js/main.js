@@ -133,7 +133,6 @@ function close_all() {
 
 function find_my_div() {
     close_all();
-    gid("navWrap").style.display = "block";
     var o_edit = gid("search");
     var str_needle = o_edit.value;
     str_needle = str_needle.toUpperCase();
@@ -142,6 +141,7 @@ function find_my_div() {
     for (var i = 0, len = searchStrings.length; i < len; i++) {
         var currentSearch = searchStrings[i].toUpperCase();
         if (currentSearch !== "") {
+            gid("navWrap").style.display = "block";
             nameDivs = document.getElementsByClassName("card");
             for (var j = 0, divsLen = nameDivs.length; j < divsLen; j++) {
                 if (nameDivs[j].textContent.toUpperCase().indexOf(currentSearch) !== -1) {
@@ -149,6 +149,9 @@ function find_my_div() {
                     count ++;
                 }
             }
+        }
+        else {
+            gid("navWrap").style.display = "none";
         }
     }
     gid("searchHeader").textContent = "Søkeresultater (" + count + ")";
