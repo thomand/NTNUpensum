@@ -60,8 +60,8 @@
             </div>
             <div class="col s12">
                 <form>
-                    <div class="input-field">
-                        <input id="search" type="search" required>
+                    <div class="input-field" onclick="gid('searchResults').style.display = 'block'">
+                        <input id="search" type="search" required onkeyup="find_my_div();">
                         <label for="search"><i id="searchIcon" class="material-icons">search</i></label>
                         <i class="material-icons">close</i>
                     </div>
@@ -72,12 +72,12 @@
     </div>
 </div>
 
-<div class="section scrollspy" id="searchResults">
+<div class="section scrollspy" id="searchResults" style="display: none">
     <div class="container">
-        <h2 id="searchHeader" class="header text_b">Søkeresultater</h2>
+        <h2 id="searchHeader" class="header text_b"></h2>
         <div class="row" id="card-container-row">
             <div id="cardContainer" class="col s12">
-                <div id="navWrap" class="card">
+                <div id="navWrap" class="card" style="display: none">
                     <div id="choices">
                         <div class="col s2"><h5 class="text_b">Emnekode</h5></div>
                         <div class="col s6"><h5 class="text_b">Emnenavn</h5></div>
@@ -170,11 +170,13 @@
 <!--<script src="min/plugin-min.js"></script>-->
     <script src="min/custom-min.js"></script>
     <script src="js/materialize.js"></script>
+    <script src="js/modernizr.js"></script>
     <script>
         var navWrap = $('#navWrap'),
                 nav = $('#choices'),
-                stop = $('#stopHere'),
+                //stop = $('#stopHere'),
                 topNavBar = $('#nav_f'),
+                windowHeight = $(document).height(),
                 startPosition = navWrap.offset().top + nav.outerHeight() - topNavBar.outerHeight();
                 /*stopPosition = stop.offset().top - nav.outerHeight() - 170;*/
 
@@ -182,7 +184,7 @@
             //stick courseInfo to top of page
             var y = $(this).scrollTop();
 
-            if (y > startPosition) {
+            if (y > startPosition && windowHeight > 2000) {
                 /*var temp = document.getElementById("navWrap").nextElementSibling.getBoundingClientRect().top - 25;*/
                 navWrap.addClass('sticky');
                 /*document.getElementById("navWrap").nextElementSibling.style.top = temp.toString() + "px";*/

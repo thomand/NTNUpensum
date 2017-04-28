@@ -83,6 +83,8 @@ function makeSubjectCard(data, index) {
             index_.textContent = index;
             index_.style.display = "none";
             card.appendChild(index_);
+            card.id = "card_" + index;
+            card.style.display = "none";
             /*Add the card to the cardContainer*/
             document.getElementById("cardContainer").appendChild(card);
 
@@ -111,6 +113,45 @@ function makeSubjectInfo(card, data) {
     cardReveal.appendChild(bookInfo);
     /*Add the card-reveal to the card*/
     card.appendChild(cardReveal);
+}
+
+function gid(a_id) {
+    return document.getElementById(a_id);
+}
+
+function close_all() {
+
+    for (i = 0; i <= 999; i++) {
+        var o = gid("card_" + i);
+        if (o) {
+            o.style.display = "none";
+        }
+    }
+
+}
+
+
+function find_my_div() {
+    close_all();
+    gid("navWrap").style.display = "block";
+    var o_edit = gid("search");
+    var str_needle = o_edit.value;
+    str_needle = str_needle.toUpperCase();
+    var searchStrings = str_needle.split(/\W/);
+    count = 0;
+    for (var i = 0, len = searchStrings.length; i < len; i++) {
+        var currentSearch = searchStrings[i].toUpperCase();
+        if (currentSearch !== "") {
+            nameDivs = document.getElementsByClassName("card");
+            for (var j = 0, divsLen = nameDivs.length; j < divsLen; j++) {
+                if (nameDivs[j].textContent.toUpperCase().indexOf(currentSearch) !== -1) {
+                    nameDivs[j].style.display = "block";
+                    count ++;
+                }
+            }
+        }
+    }
+    gid("searchHeader").textContent = "Søkeresultater (" + count + ")";
 }
 
 
