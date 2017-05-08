@@ -14,7 +14,6 @@ body {
     left: 0px;
     top: 0;
     margin: 0;
-    height: 100%;
     height: calc(100% + 60px);
     height: -moz-calc(100%);
     padding-bottom: 60px;
@@ -305,7 +304,7 @@ nav a.button-collapse {
 }
 
 footer.page-footer {
-    margin-top: 0px !important;
+    margin-top: 0 !important;
 }
 
 /*STAFFSEARCH*/

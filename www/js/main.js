@@ -24,15 +24,28 @@ function init() {
 
 // Attach an asynchronous callback to read the data at our posts reference
     ref.on("value", function(snapshot) {
-        var data = snapshot.val();
+        items = [];
+        snapshot.forEach(function(child) {
+            items.push({
+                code: child.val().code,
+                name: child.val().name,
+                location: child.val().location,
+                _key: child.key //<--------------this is where I get the key
+            });
+        });
+        //console.log(items);
+
+        /*var data = snapshot.val();
+        console.log(data[0].key);
         var t0 = performance.now();
         insert(data);
         var t1 = performance.now();
         console.log("Call to generate subjects took " + (t1 - t0) + " milliseconds.");
-        //console.log(data);
+        //console.log(data);*/
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
+
 }
 
 function insert(data) {
@@ -129,7 +142,7 @@ function close_all() {
     }
 
 }
-
+/*Knuth–Morris–Pratt algorithm*/
 function kmpSearch(pattern, text) {
     if (pattern.length == 0)
         return 0;  // Immediate match
@@ -159,6 +172,7 @@ function kmpSearch(pattern, text) {
     return -1;  // Not found
 }
 
+globalSearchResults = [];
 
 function find_my_div() {
     close_all();
@@ -167,34 +181,68 @@ function find_my_div() {
     str_needle = str_needle.toUpperCase();
     var searchStrings = str_needle.split(/\W/);
     count = 0;
+    var localSearchResults = [];
     for (var i = 0, len = searchStrings.length; i < len; i++) {
         var currentSearch = searchStrings[i].toUpperCase();
         if (currentSearch !== "") {
             gid("navWrap").style.display = "block";
-            nameDivs = document.getElementsByClassName("card");
+            //nameDivs = document.getElementsByClassName("card");
+            nameDivs = items;
             for (var j = 0, divsLen = nameDivs.length; j < divsLen; j++) {
-                if (nameDivs[j].textContent.toUpperCase().indexOf(currentSearch) !== -1) {
-                    arr = nameDivs[j].textContent.toUpperCase().split(" ");
-                    arr.pop();
-                    for (element in arr) {
-                        var match = kmpSearch(currentSearch,arr[element]);
+                subject = [items[j].code, items[j].name, items[j].location, "Tekniske fag"];
+                /*if (nameDivs[j].textContent.toUpperCase().indexOf(currentSearch) !== -1) {*/
+                   //arr = nameDivs[j].textContent.toUpperCase().split(" ");
+                    //arr.pop();
+                    for (element in subject) {
+                        var match = kmpSearch(currentSearch,subject[element]);
                         if (match == 0) {
-                            console.log(arr[element]);
-                            nameDivs[j].style.display = "block";
+                            //console.log(subject[element]);
+                            localSearchResults.push([nameDivs[j],nameDivs[j]._key]);
                             count++;
                             break;
                         }
                     }
 
-                }
+                /*}*/
             }
+            counter = 1;
+            globalSearchResults = localSearchResults;
+            //make the ten first search result cards.
+            showDivsInRange(0, 9);
+
         }
         else {
             gid("navWrap").style.display = "none";
+            globalSearchResults = [];
         }
     }
     gid("searchHeader").textContent = "Søkeresultater (" + count + ")";
 }
+
+function showDivsInRange(start, end){
+    for (var i = start; i < end; i++) {
+        if (end > globalSearchResults.length) {
+            end = globalSearchResults.length;
+        }
+        makeSubjectCard(globalSearchResults[i][0],globalSearchResults[i][1]);
+        gid("card_" + globalSearchResults[i][1]).style.display = "block";
+    }
+}
+
+counter = 1;
+
+$(window).scroll(function() {
+    //console.log($(window).scrollTop() + $(window).height() + 500 + "=" + $(document).height());
+    if($(window).scrollTop() + $(window).height() + 500 >= $(document).height()) {
+        if ($(document).height() > 1800 && globalSearchResults.length >= counter*10){
+            //make ten new cards when user scrolls down page
+            showDivsInRange(counter*10,(counter*10)+9);
+            counter++;
+        }
+    }
+});
+
+//document height with 10 showing = 2940;
 
 $(document).ready(function() {
     $(window).keydown(function(event){
